@@ -1,0 +1,103 @@
+/* About.css */
+.about-page {
+    /* Local theme variables that swap based on mode */
+    --local-bg: var(--bg-light);
+    --local-text: var(--text-light);
+    --local-card: var(--card-light);
+    --local-accent: var(--secondary);
+
+    min-height: 100vh;
+    background-color: var(--local-bg);
+    color: var(--local-text);
+    transition: var(--transition);
+}
+
+/* Theme Adaptation: Triggers if class is on body OR the component itself */
+body.dark-mode .about-page,
+.about-page.dark-mode {
+    --local-bg: var(--bg-dark);
+    --local-text: var(--text-dark);
+    --local-card: var(--card-dark);
+    /* Lighter blue for better contrast in dark mode */
+    --local-accent: #63b3ed;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.about-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.about-header h1 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    color: var(--local-accent);
+    font-family: 'Merriweather', serif;
+}
+
+.sanskrit-quote {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    color: var(--primary);
+    margin: 15px 0;
+}
+
+/* Mission Grid: Responsive layout */
+.mission-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.mission-card {
+    background: var(--local-card);
+    padding: 40px 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-bottom: 5px solid var(--primary);
+    transition: transform 0.3s ease;
+}
+
+.mission-card:hover {
+    transform: translateY(-8px);
+}
+
+.mission-card h2 {
+    color: var(--local-accent);
+    margin: 15px 0;
+}
+
+/* History Section Adaptation */
+.history-section {
+    background: rgba(224, 124, 36, 0.08);
+    padding: 40px;
+    border-radius: 15px;
+    border-left: 5px solid var(--local-accent);
+}
+
+body.dark-mode .history-section,
+.about-page.dark-mode .history-section {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .mission-card {
+        padding: 30px 20px;
+    }
+
+    .history-section {
+        padding: 25px;
+    }
+}

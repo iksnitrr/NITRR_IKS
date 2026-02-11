@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    /* Indian Knowledge System Palette */
+    --primary: #e07c24;
+    /* Saffron/Ochre */
+    --primary-hover: #b85c12;
+    --secondary: #1a365d;
+    /* Deep Academic Blue */
+    --accent: #2c5282;
+
+    --bg-light: #fdfbf7;
+    /* Parchment White */
+    --text-light: #2d3748;
+    --card-light: #ffffff;
+    --nav-light: rgba(255, 255, 255, 0.95);
+
+    --bg-dark: #121212;
+    --text-dark: #e2e8f0;
+    --card-dark: #1e1e1e;
+    --nav-dark: rgba(18, 18, 18, 0.95);
+
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    transition: var(--transition);
+    overflow-x: hidden;
+}
+
+body.dark-mode {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Utility Classes */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.section-title {
+    font-family: 'Merriweather', serif;
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--secondary);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Page Standard Layout */
+.page-content {
+    padding-top: 20px;
+    min-height: 80vh;
+}
+
+/* Hide scrollbar for Chrome, Safari and Edge */
+html::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for Firefox */
+html {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+}
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+    /* This stops the side-scrolling/zooming */
+    position: relative;
+    /* Helps contain absolute elements */
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    overflow-x: hidden;
+    /* Ensures React root doesn't overflow */
+    width: 100%;
+}

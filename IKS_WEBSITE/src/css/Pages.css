@@ -1,0 +1,58 @@
+/* --- Subtitle Styling --- */
+.page-subtitle {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    color: #666;
+    /* Default Light Mode Gray */
+}
+
+/* Dark Mode Subtitle */
+body.dark-mode .page-subtitle {
+    color: #aaa;
+    /* Lighter Gray for readability on dark */
+}
+
+/* --- Placeholder Component Styling --- */
+.placeholder-box {
+    padding: 40px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    color: #888;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.placeholder-box p {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* Dark Mode Placeholder */
+body.dark-mode .placeholder-box {
+    background-color: rgba(255, 255, 255, 0.05);
+    /* Transparent dark bg */
+    border-color: #444;
+    color: #bbb;
+}
+
+/* --- Responsive Layout (Mobile) --- */
+@media (max-width: 768px) {
+
+    /* Shrink the padding inside the box */
+    .placeholder-box {
+        padding: 20px;
+    }
+
+    /* Shrink the text size */
+    .placeholder-box p {
+        font-size: 1rem;
+    }
+
+    /* Adjust the page subtitle */
+    .page-subtitle {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+}

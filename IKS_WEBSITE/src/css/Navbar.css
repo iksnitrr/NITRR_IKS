@@ -1,0 +1,395 @@
+/* =========================================
+   1. LAYOUT & CONTAINER
+   ========================================= */
+.navbar {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: var(--nav-light);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.navbar.dark {
+    background-color: var(--nav-dark);
+    border-bottom: 1px solid #333;
+}
+
+.navbar-container {
+    display: flex;
+    flex-direction: column;
+    /* Stacks Header & Links vertically */
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* =========================================
+   2. ROW 1: HEADER (Logo + Branding)
+   ========================================= */
+.navbar-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.navbar.dark .navbar-header-row {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+}
+
+.nit-logo {
+    height: 70px;
+    width: auto;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-heading {
+    font-family: 'Merriweather', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.2;
+}
+
+.sub-heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--secondary);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+.navbar.dark .sub-heading {
+    color: #a0aec0;
+}
+
+/* --- Header Actions (Desktop Toggle & Mobile Hamburger) --- */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Desktop Theme Toggle Button */
+.theme-toggle-btn {
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    color: var(--text-light);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    transform: rotate(15deg);
+    box-shadow: 0 4px 10px rgba(224, 124, 36, 0.3);
+}
+
+.navbar.dark .theme-toggle-btn {
+    color: var(--text-dark);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar.dark .theme-toggle-btn:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+.desktop-only {
+    display: flex;
+}
+
+.mobile-only {
+    display: none;
+}
+
+.mobile-menu-icon {
+    display: none;
+}
+
+/* =========================================
+   3. ROW 2: NAVIGATION LINKS
+   ========================================= */
+.navbar-links-row {
+    display: block;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.nav-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.navbar.dark .nav-link {
+    color: var(--text-dark);
+}
+
+.nav-link:hover {
+    color: var(--primary);
+    background: rgba(224, 124, 36, 0.08);
+}
+
+/* =========================================
+   4. DROPDOWNS
+   ========================================= */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--card-light);
+    border-top: 3px solid var(--primary);
+    min-width: 200px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    display: none;
+    flex-direction: column;
+    border-radius: 4px;
+    padding: 5px 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 1000;
+}
+
+.dropdown-menu.show {
+    display: flex;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.navbar.dark .dropdown-menu {
+    background: var(--card-dark);
+    border: 1px solid #333;
+    border-top: 3px solid var(--primary);
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 12px 20px;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.navbar.dark .dropdown-menu li a {
+    color: var(--text-dark);
+}
+
+.dropdown-menu li a:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--primary);
+}
+
+/* =========================================
+   5. MOBILE RESPONSIVENESS
+   ========================================= */
+@media screen and (max-width: 1100px) {
+
+    /* Reset Container */
+    .navbar-container {
+        padding: 0 15px;
+    }
+
+    /* --- HEADER ADJUSTMENTS (Taller & Bigger Text) --- */
+    .navbar-header-row {
+        border-bottom: none;
+        padding: 20px 0;
+        width: 100%;
+    }
+
+    .navbar-brand {
+        gap: 12px;
+    }
+
+    /* Increased Logo Size */
+    .nit-logo {
+        height: 65px;
+    }
+
+    /* Increased Text Sizes */
+    .main-heading {
+        font-size: 1.1rem;
+        /* Was 0.85rem */
+        line-height: 1.3;
+    }
+
+    .sub-heading {
+        font-size: 0.75rem;
+        /* Was 0.6rem */
+        margin-top: 4px;
+        letter-spacing: 0.5px;
+    }
+
+    /* Hide Desktop Elements */
+    .desktop-only {
+        display: none;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+        color: var(--primary);
+        cursor: pointer;
+        padding: 5px;
+        transform: scale(1.1);
+        /* Make hamburger icon slightly bigger */
+    }
+
+    /* --- NAVIGATION DRAWER (Slide from LEFT) --- */
+    .navbar-links-row {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--bg-light);
+        box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        transition: left 0.4s ease-in-out;
+        padding-top: 90px;
+        overflow-y: auto;
+    }
+
+    .navbar-links-row.active {
+        left: 0;
+    }
+
+    .navbar.dark .navbar-links-row {
+        background: var(--bg-dark);
+        border-right: 1px solid #333;
+    }
+
+    /* Mobile Menu List Style */
+    .nav-menu {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        width: 100%;
+        gap: 0;
+    }
+
+    .nav-item {
+        width: 100%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        margin-bottom: 10px;
+    }
+
+    .navbar.dark .nav-item {
+        border-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+        /* Bigger links for touch */
+        padding: 15px 0;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    /* Mobile Dropdown */
+    .dropdown-menu {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        padding-left: 15px;
+        border-left: 3px solid var(--primary);
+        margin: 5px 0 10px 10px;
+        width: 95%;
+    }
+
+    /* Mobile Theme Button */
+    .mobile-only {
+        display: block;
+        border: none;
+        margin-top: 30px;
+    }
+
+    .theme-btn-mobile {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(135deg, var(--secondary), #2a4365);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+}
+
+/* Extra Small Phones (iPhone SE, etc.) */
+@media screen and (max-width: 480px) {
+
+    /* Prevent overflow on very small screens */
+    .brand-text {
+        max-width: 220px;
+    }
+
+    .main-heading {
+        font-size: 0.95rem;
+    }
+
+    /* Readable minimum */
+    .sub-heading {
+        font-size: 0.65rem;
+    }
+
+    .nit-logo {
+        height: 55px;
+    }
+
+    .navbar-header-row {
+        padding: 15px 0;
+    }
+}
