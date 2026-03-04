@@ -3,6 +3,7 @@ import cors from "cors";
 import connectDB from "./config/connectDB.js";
 import "dotenv/config.js";
 import router from "./routes/people.js";
+import eventRouter from "./routes/event.js"
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -36,6 +37,7 @@ app.use(express.urlencoded({ extended: true }));
 connectDB();
 
 app.use("/person", router);
+app.use("/event", eventRouter);
 
 app.listen(PORT, () => {
   console.log("Server Started on", PORT);

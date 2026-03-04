@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Users, Home, BookOpen, Microscope, Database, Newspaper, Handshake } from 'lucide-react';
+import { Users, Home, BookOpen, Microscope, Database, Newspaper, Handshake, Calendar } from 'lucide-react';
 import "../css/Dashboard.css"
 
 const Dashboard = () => {
@@ -9,6 +9,7 @@ const Dashboard = () => {
     const cards = [
         { title: "Home", path: "/home-edit", icon: <Home size={24} />, color: "#2563eb" },
         { title: "People", path: "/people", icon: <Users size={24} />, color: "#4f46e5" },
+        { title: "Events", path: "/events", icon: <Calendar size={24} />, color: "#8b5cf6" },
         { title: "Academics", path: "/academics", icon: <BookOpen size={24} />, color: "#16a34a" },
         { title: "Research", path: "/research", icon: <Microscope size={24} />, color: "#9333ea" },
         { title: "Knowledge Repository", path: "/knowledge-repo", icon: <Database size={24} />, color: "#ea580c" },
