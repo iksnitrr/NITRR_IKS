@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 
 // Import the placeholder pages
 import People from "./pages/People";
+import Events from "./pages/Events";
 import { Academics, Research, Repository, News, Collaborators } from "./pages/Pages";
 import About from "./pages/About";
 
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/people" element={<People />} />
+            <Route path="/events" element={<Events />} />
             <Route path="/academics" element={<Academics />} />
             <Route path="/research" element={<Research />} />
             <Route path="/repository" element={<Repository />} />

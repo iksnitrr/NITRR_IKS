@@ -60,6 +60,10 @@ function Navbar() {
                         </li>
 
                         <li className="nav-item">
+                            <Link to="/events" className="nav-link" onClick={closeMenu}>Events</Link>
+                        </li>
+
+                        <li className="nav-item">
                             <Link to="/academics" className="nav-link" onClick={closeMenu}>Academics</Link>
                         </li>
 
