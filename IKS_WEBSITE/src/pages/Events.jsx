@@ -68,105 +68,133 @@ function Events() {
             }
         };
 
-        // Only attach the listener if the lightbox is actually open
         if (lightbox.isOpen) {
             window.addEventListener("keydown", handleKeyDown);
         }
 
-        // Cleanup listener when component unmounts or lightbox closes
         return () => window.removeEventListener("keydown", handleKeyDown);
     }, [lightbox.isOpen]);
     // ---------------------------------------------
 
-    const EventCard = ({ event }) => (
-        <div className="public-event-card">
-            <div className="event-card-header">
-                <span className={`event-status-badge badge-${event.status}`}>
-                    {event.status}
-                </span>
-            </div>
+    // --- UPDATED EVENT CARD: Added Limits and State ---
+    const EventCard = ({ event }) => {
+        const [isExpanded, setIsExpanded] = useState(false);
+        const CHAR_LIMIT = 280;
+        const IMAGE_LIMIT = 4;
 
-            <h3 className="public-event-title">{event.title}</h3>
-
-            <div className="event-details-box">
-                <div className="event-detail-item">
-                    <Calendar size={20} />
-                    <span>{new Date(event.date).toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        return (
+            <div className="public-event-card">
+                <div className="event-card-header">
+                    <span className={`event-status-badge badge-${event.status}`}>
+                        {event.status}
+                    </span>
                 </div>
-                {event.time && (
-                    <div className="event-detail-item">
-                        <Clock size={20} />
-                        <span>{event.time}</span>
-                    </div>
-                )}
-                {event.venue && (
-                    <div className="event-detail-item">
-                        <MapPin size={20} />
-                        <span>{event.venue}</span>
-                    </div>
-                )}
-                {event.speaker && (
-                    <div className="event-detail-item">
-                        <User size={20} />
-                        <span>{event.speaker}</span>
-                    </div>
-                )}
-            </div>
 
-            {event.description && (
-                <p className="public-event-desc">{event.description}</p>
-            )}
+                <h3 className="public-event-title">{event.title}</h3>
 
-            {(event.noticePdfs?.length > 0 || event.images?.length > 0) && (
-                <div className="event-media-section">
-
-                    {/* Notice PDFs */}
-                    {event.noticePdfs && event.noticePdfs.length > 0 && (
-                        <div>
-                            <div className="media-label"><BookOpen size={20} /> Event Documents & Notices</div>
-                            <div className="pdf-links-wrapper">
-                                {event.noticePdfs.map((pdf, idx) => (
-                                    <a
-                                        key={idx}
-                                        href={getUrl(pdf)}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="pdf-link-btn"
-                                    >
-                                        <FileText size={18} />
-                                        {getName(pdf, `Notice Document ${idx + 1}`)}
-                                    </a>
-                                ))}
-                            </div>
+                <div className="event-details-box">
+                    <div className="event-detail-item">
+                        <Calendar size={20} />
+                        <span>{new Date(event.date).toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                    </div>
+                    {event.time && (
+                        <div className="event-detail-item">
+                            <Clock size={20} />
+                            <span>{event.time}</span>
                         </div>
                     )}
-
-                    {/* Event Gallery */}
-                    {event.images && event.images.length > 0 && (
-                        <div style={{ marginTop: '20px' }}>
-                            <div className="media-label"><ImageIcon size={20} /> Event Gallery</div>
-                            <div className="photo-gallery-grid">
-                                {event.images.map((img, idx) => (
-                                    <div
-                                        key={idx}
-                                        onClick={(e) => { e.preventDefault(); openLightbox(event.images, idx); }}
-                                        style={{ cursor: 'pointer' }}
-                                    >
-                                        <img
-                                            src={getUrl(img)}
-                                            alt={`Event snap ${idx + 1}`}
-                                            className="photo-thumb"
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                ))}
-                            </div>
+                    {event.venue && (
+                        <div className="event-detail-item">
+                            <MapPin size={20} />
+                            <span>{event.venue}</span>
+                        </div>
+                    )}
+                    {event.speaker && (
+                        <div className="event-detail-item">
+                            <User size={20} />
+                            <span>{event.speaker}</span>
                         </div>
                     )}
                 </div>
-            )}
-        </div>
-    );
+
+                {/* --- Read More / Show Less Logic --- */}
+                {event.description && (
+                    <div className="event-description-wrapper">
+                        <p className="public-event-desc">
+                            {isExpanded
+                                ? event.description
+                                : `${event.description.substring(0, CHAR_LIMIT)}${event.description.length > CHAR_LIMIT ? '...' : ''}`
+                            }
+                        </p>
+                        {event.description.length > CHAR_LIMIT && (
+                            <button
+                                className="read-more-btn"
+                                onClick={() => setIsExpanded(!isExpanded)}
+                            >
+                                {isExpanded ? "Show Less" : "Read More"}
+                            </button>
+                        )}
+                    </div>
+                )}
+
+                {(event.noticePdfs?.length > 0 || event.images?.length > 0) && (
+                    <div className="event-media-section">
+
+                        {/* Notice PDFs */}
+                        {event.noticePdfs && event.noticePdfs.length > 0 && (
+                            <div>
+                                <div className="media-label"><BookOpen size={20} /> Event Documents & Notices</div>
+                                <div className="pdf-links-wrapper">
+                                    {event.noticePdfs.map((pdf, idx) => (
+                                        <a
+                                            key={idx}
+                                            href={getUrl(pdf)}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="pdf-link-btn"
+                                        >
+                                            <FileText size={18} />
+                                            {getName(pdf, `Notice Document ${idx + 1}`)}
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* --- Smart Event Gallery Logic --- */}
+                        {event.images && event.images.length > 0 && (
+                            <div style={{ marginTop: '20px' }}>
+                                <div className="media-label"><ImageIcon size={20} /> Event Gallery</div>
+                                <div className="photo-gallery-grid">
+                                    {event.images.slice(0, IMAGE_LIMIT).map((img, idx) => (
+                                        <div
+                                            key={idx}
+                                            onClick={(e) => { e.preventDefault(); openLightbox(event.images, idx); }}
+                                            className="photo-thumb-container"
+                                            style={{ cursor: 'pointer' }}
+                                        >
+                                            <img
+                                                src={getUrl(img)}
+                                                alt={`Event snap ${idx + 1}`}
+                                                className="photo-thumb"
+                                                loading="lazy"
+                                            />
+                                            {/* Show overlay on the last allowed image if there are hidden ones */}
+                                            {idx === IMAGE_LIMIT - 1 && event.images.length > IMAGE_LIMIT && (
+                                                <div className="more-photos-overlay">
+                                                    +{event.images.length - IMAGE_LIMIT} More
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                )}
+            </div>
+        );
+    };
 
     return (
         <div className="events-page">
