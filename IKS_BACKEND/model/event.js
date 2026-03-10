@@ -34,7 +34,7 @@ const eventSchema = new mongoose.Schema({
     type: [{ url: String, name: String }], 
     default: []
   },
-  noticePdfs: {
+  noticePdfs: { 
     type: [{ url: String, name: String }], 
     default: []
   }

@@ -416,4 +416,51 @@ body.dark-mode .pdf-link-btn {
     .lightbox-img {
         max-width: 95vw;
     }
+}/* --- Read More Button Formatting --- */
+.read-more-btn {
+    background: transparent;
+    border: none;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    padding: 0;
+    margin-top: -15px;
+    margin-bottom: 25px;
+    display: block;
+    text-decoration: none;
+}
+
+.read-more-btn:hover {
+    text-decoration: underline;
+}
+
+/* --- Smart Gallery Overlay Formatting --- */
+.photo-thumb-container {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.more-photos-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    pointer-events: none;
+    /* Allows the click to pass to the image below */
+    backdrop-filter: blur(2px);
+    transition: background 0.3s ease;
+}
+
+.photo-thumb-container:hover .more-photos-overlay {
+    background: rgba(0, 0, 0, 0.4);
 }
