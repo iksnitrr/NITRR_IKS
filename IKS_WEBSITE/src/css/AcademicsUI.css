@@ -1,0 +1,225 @@
+/* Container & Background */
+.academics-page-container {
+  background-color: #f8fafc;
+  color: #0f172a;
+  min-height: 100vh;
+  padding: 40px 20px 80px 20px;
+  margin-top: 80px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.loading-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Page Header */
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+  color: #0f172a;
+}
+
+.header-underline {
+  width: 50px;
+  height: 3px;
+  background-color: #f97316;
+  margin: 0 auto;
+}
+
+/* Archive Section */
+.archive-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.archive-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #334155;
+}
+
+.courses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+/* Course Card (Zero hover-lift transitions) */
+.course-full-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 35px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+}
+
+.course-badge {
+  display: inline-block;
+  background-color: #f1f5f9;
+  color: #ea580c;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+.course-status-pill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.course-status-pill.active {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.course-status-pill.inactive {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.course-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.3;
+  color: #0f172a;
+}
+
+/* Info Box */
+.course-info-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  background-color: #f8fafc;
+  padding: 18px 22px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #f97316;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #334155;
+  font-size: 0.9rem;
+  flex: 1;
+  min-width: 200px;
+}
+
+.info-icon {
+  color: #f97316;
+  flex-shrink: 0;
+}
+
+/* Typography & Lists */
+.styled-list {
+  padding-left: 20px;
+  margin: 0;
+  color: #334155;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.course-sub-section {
+  margin-bottom: 25px;
+}
+
+/* Divider */
+.dotted-divider {
+  border: 0;
+  border-top: 1px dashed #cbd5e1;
+  margin: 25px 0;
+}
+
+/* Units Section (Full Width Stack Layout) */
+.course-units-section {
+  margin-bottom: 25px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #0f172a;
+}
+
+.units-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.unit-card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #0f172a;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.unit-card h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #991b1b;
+  white-space: pre-wrap;
+}
+
+.unit-card ul {
+  padding-left: 18px;
+  margin: 0;
+  color: #334155;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.unit-card li {
+  white-space: pre-wrap;
+}
+
+/* Books Section */
+.books-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.book-section-card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.no-data-text {
+  color: #64748b;
+  font-style: italic;
+  font-size: 0.9rem;
+}

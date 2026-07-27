@@ -4,6 +4,7 @@ import connectDB from "./config/connectDB.js";
 import "dotenv/config.js";
 import router from "./routes/people.js";
 import eventRouter from "./routes/event.js"
+import adacsRouter from "./routes/academics.js"
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -38,6 +39,7 @@ connectDB();
 
 app.use("/person", router);
 app.use("/event", eventRouter);
+app.use("/academics", adacsRouter);
 
 app.listen(PORT, () => {
   console.log("Server Started on", PORT);

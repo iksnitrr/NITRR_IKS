@@ -16,11 +16,11 @@ const Placeholder = ({ text }) => (
     </div>
 );
 
-export const Academics = () => (
-    <PageLayout title="Academics" subtitle="Courses and Curriculum">
-        <Placeholder text="Course and Curriculum details will be added soon." />
-    </PageLayout>
-);
+// export const Academics = () => (
+//     <PageLayout title="Academics" subtitle="Courses and Curriculum">
+//         <Placeholder text="Course and Curriculum details will be added soon." />
+//     </PageLayout>
+// );
 
 export const Research = () => (
     <PageLayout title="Research Projects & Labs" subtitle="Ongoing and Completed Gaveshana">

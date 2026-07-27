@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard';
 import PeopleManager from './pages/PeopleManager';
 import EventManager from './pages/EventManager';
 import ComingSoon from './pages/ComingSoon';
+import Academics from './pages/Academics.jsx';
 
 const App = () => {
   return (
@@ -14,8 +15,7 @@ const App = () => {
           <Route path="/" element={<Dashboard />} />
           <Route path="/people" element={<PeopleManager />} />
           <Route path="/events" element={<EventManager />} />
-          <Route path="/academics" element={<ComingSoon title="Academics" />} />
-          <Route path="/research" element={<ComingSoon title="Research" />} />
+          <Route path="/academics" element={<Academics/>} />
           <Route path="/knowledge-repo" element={<ComingSoon title="Knowledge Repository" />} />
           <Route path="/news" element={<ComingSoon title="Upcoming & In News" />} />
           <Route path="/collaborators" element={<ComingSoon title="Collaborators" />} />

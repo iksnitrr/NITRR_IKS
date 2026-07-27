@@ -6,7 +6,8 @@ import HomePage from "./pages/HomePage";
 // Import the placeholder pages
 import People from "./pages/People";
 import Events from "./pages/Events";
-import { Academics, Research, Repository, News, Collaborators } from "./pages/Pages";
+import Academics from "./pages/Academics";
+import { Research, Repository, News, Collaborators } from "./pages/Pages";
 import About from "./pages/About";
 
 function App() {

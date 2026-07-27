@@ -105,6 +105,10 @@
     border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.p-card-email-link svg {
+    flex-shrink: 0;
+}
+
 .p-card-email-link {
     display: flex;
     align-items: center;
