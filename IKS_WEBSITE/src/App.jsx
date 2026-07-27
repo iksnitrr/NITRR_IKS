@@ -3,7 +3,6 @@ import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 
-// Import the placeholder pages
 import People from "./pages/People";
 import Events from "./pages/Events";
 import Academics from "./pages/Academics";
