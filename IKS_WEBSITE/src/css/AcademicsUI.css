@@ -1,11 +1,20 @@
-/* Container & Background */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* =========================================
+   ACADEMICS PAGE CONTAINER & BACKGROUND
+   ========================================= */
 .academics-page-container {
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: var(--bg-light);
+  color: var(--text-light);
   min-height: 100vh;
-  padding: 40px 20px 80px 20px;
-  margin-top: 80px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding: 60px 20px 80px 20px;
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .academics-page-container {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
 }
 
 .loading-state {
@@ -13,69 +22,122 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: var(--bg-light);
+  color: var(--secondary);
+  font-family: 'Merriweather', serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Page Header */
+body.dark-mode .loading-state {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* =========================================
+   PAGE HEADER & TYPOGRAPHY
+   ========================================= */
 .page-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .page-header h1 {
+  font-family: 'Merriweather', serif;
   font-size: 2.2rem;
   font-weight: 700;
+  color: var(--secondary);
   margin-bottom: 10px;
   letter-spacing: 0.5px;
-  color: #0f172a;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .page-header h1 {
+  color: var(--text-dark);
 }
 
 .header-underline {
-  width: 50px;
-  height: 3px;
-  background-color: #f97316;
-  margin: 0 auto;
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary);
+  margin: 10px auto 0;
+  border-radius: 2px;
 }
 
-/* Archive Section */
+/* =========================================
+   ARCHIVE SECTION
+   ========================================= */
 .archive-section {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
 }
 
 .archive-title {
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: #334155;
+  font-family: 'Merriweather', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: var(--secondary);
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode .archive-title {
+  color: var(--text-dark);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
 .courses-list {
   display: flex;
   flex-direction: column;
-  gap: 35px;
+  gap: 40px;
 }
 
-/* Course Card (Zero hover-lift transitions) */
+/* =========================================
+   COURSE FULL CARD
+   ========================================= */
 .course-full-card {
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
+  background-color: var(--card-light);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
   padding: 35px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
+body.dark-mode .course-full-card {
+  background-color: var(--card-dark);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.course-full-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode .course-full-card:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Metadata Badges & Status Pills */
 .course-badge {
   display: inline-block;
-  background-color: #f1f5f9;
-  color: #ea580c;
+  background-color: rgba(224, 124, 36, 0.12);
+  color: var(--primary);
   font-size: 0.75rem;
   font-weight: 600;
-  padding: 5px 12px;
+  padding: 5px 14px;
   border-radius: 20px;
   letter-spacing: 0.5px;
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .course-badge {
+  background-color: rgba(224, 124, 36, 0.2);
+  color: #f97316;
 }
 
 .course-status-pill {
@@ -84,6 +146,8 @@
   padding: 4px 12px;
   border-radius: 20px;
   text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .course-status-pill.active {
@@ -91,69 +155,82 @@
   color: #166534;
 }
 
+body.dark-mode .course-status-pill.active {
+  background-color: rgba(22, 101, 52, 0.3);
+  color: #4ade80;
+}
+
 .course-status-pill.inactive {
   background-color: #fee2e2;
   color: #dc2626;
 }
 
+body.dark-mode .course-status-pill.inactive {
+  background-color: rgba(220, 38, 38, 0.3);
+  color: #fca5a5;
+}
+
+/* Course Title */
 .course-title {
+  font-family: 'Merriweather', serif;
   font-size: 1.7rem;
   font-weight: 700;
   margin-bottom: 20px;
   line-height: 1.3;
-  color: #0f172a;
+  color: var(--text-light);
+  transition: color 0.3s ease;
 }
 
-/* Info Box */
+body.dark-mode .course-title {
+  color: var(--text-dark);
+}
+
+/* =========================================
+   INFO BOX
+   ========================================= */
 .course-info-box {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   background-color: #f8fafc;
-  padding: 18px 22px;
-  border-radius: 10px;
+  padding: 20px 24px;
+  border-radius: 12px;
   margin-bottom: 25px;
-  border: 1px solid #e2e8f0;
-  border-left: 4px solid #f97316;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-left: 4px solid var(--primary);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode .course-info-box {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+  border-left-color: var(--primary);
 }
 
 .info-item {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #334155;
-  font-size: 0.9rem;
+  color: var(--text-light);
+  font-size: 0.92rem;
   flex: 1;
-  min-width: 200px;
+  min-width: 220px;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .info-item {
+  color: var(--text-dark);
 }
 
 .info-icon {
-  color: #f97316;
+  color: var(--primary);
   flex-shrink: 0;
 }
 
-/* Typography & Lists */
-.styled-list {
-  padding-left: 20px;
-  margin: 0;
-  color: #334155;
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
+/* =========================================
+   SUB-SECTIONS & LISTS
+   ========================================= */
 .course-sub-section {
-  margin-bottom: 25px;
-}
-
-/* Divider */
-.dotted-divider {
-  border: 0;
-  border-top: 1px dashed #cbd5e1;
-  margin: 25px 0;
-}
-
-/* Units Section (Full Width Stack Layout) */
-.course-units-section {
   margin-bottom: 25px;
 }
 
@@ -161,10 +238,51 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 1.15rem;
+  font-family: 'Merriweather', serif;
+  font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 15px;
-  color: #0f172a;
+  color: var(--secondary);
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .section-heading {
+  color: var(--text-dark);
+}
+
+.section-heading svg {
+  color: var(--primary);
+}
+
+.styled-list {
+  padding-left: 20px;
+  margin: 0;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .styled-list {
+  color: #cbd5e1;
+}
+
+/* Divider */
+.dotted-divider {
+  border: 0;
+  border-top: 1px dashed rgba(0, 0, 0, 0.12);
+  margin: 25px 0;
+}
+
+body.dark-mode .dotted-divider {
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+/* =========================================
+   UNITS SECTION
+   ========================================= */
+.course-units-section {
+  margin-bottom: 25px;
 }
 
 .units-grid {
@@ -175,35 +293,55 @@
 
 .unit-card {
   background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
-  color: #0f172a;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  color: var(--text-light);
   padding: 20px;
   border-radius: 10px;
   width: 100%;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .unit-card {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--text-dark);
 }
 
 .unit-card h4 {
-  font-size: 1rem;
+  font-family: 'Merriweather', serif;
+  font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 10px;
-  color: #991b1b;
+  color: var(--primary);
   white-space: pre-wrap;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .unit-card h4 {
+  color: #f97316;
 }
 
 .unit-card ul {
   padding-left: 18px;
   margin: 0;
-  color: #334155;
+  color: var(--text-light);
   font-size: 0.9rem;
   line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .unit-card ul {
+  color: #cbd5e1;
 }
 
 .unit-card li {
   white-space: pre-wrap;
 }
 
-/* Books Section */
+/* =========================================
+   BOOKS SECTION
+   ========================================= */
 .books-container {
   display: flex;
   flex-direction: column;
@@ -213,13 +351,45 @@
 
 .book-section-card {
   background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 10px;
   padding: 20px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode .book-section-card {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .no-data-text {
   color: #64748b;
   font-style: italic;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .no-data-text {
+  color: #94a3b8;
+}
+
+/* =========================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================= */
+@media screen and (max-width: 768px) {
+  .academics-page-container {
+    padding: 40px 15px;
+  }
+
+  .page-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .course-full-card {
+    padding: 24px;
+  }
+
+  .course-title {
+    font-size: 1.4rem;
+  }
 }

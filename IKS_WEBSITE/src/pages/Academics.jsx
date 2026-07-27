@@ -1,28 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { Book, GraduationCap, CheckCircle, BookOpen, Target, FileText, Layers, Bookmark } from "lucide-react";
+import ErrorState from "../components/ErrorState";
 import "../css/AcademicsUI.css";
 
 const Academics = () => {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     getAllCourses();
   }, []);
 
   const getAllCourses = async () => {
+    setLoading(true);
+    setError(null);
     try {
       const response = await fetch(`${BACKEND_URL}/academics/getAllCourses`);
-      const data = await response.json();
-
-      if (response.ok) {
-        setCourses(data.data || []);
-      } else {
-        console.log(data.message);
+      if (!response.ok) {
+        throw new Error("Failed to fetch courses");
       }
-    } catch (error) {
-      console.log("Error fetching courses:", error);
+      const data = await response.json();
+      setCourses(data.data || []);
+    } catch (err) {
+      console.error("Error fetching courses:", err);
+      setError(err.message || "Failed to load courses");
     } finally {
       setLoading(false);
     }
@@ -48,10 +51,16 @@ const Academics = () => {
       <div className="archive-section">
         <h2 className="archive-title">Course Directory</h2>
 
-        <div className="courses-list">
-          {courses.length === 0 ? (
-            <p className="no-data-text">No academic courses available at the moment.</p>
-          ) : (
+        {error ? (
+          <ErrorState
+            title="Unable to Load Academic Courses"
+            onRetry={getAllCourses}
+          />
+        ) : (
+          <div className="courses-list">
+            {courses.length === 0 ? (
+              <p className="no-data-text">No academic courses available at the moment.</p>
+            ) : (
             courses.map((course) => (
               <div key={course._id} className="course-full-card">
                 
@@ -191,6 +200,7 @@ const Academics = () => {
             ))
           )}
         </div>
+        )}
       </div>
     </div>
   );

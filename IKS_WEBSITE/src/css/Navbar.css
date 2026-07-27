@@ -335,14 +335,30 @@
     /* Mobile Dropdown */
     .dropdown-menu {
         position: static;
+        left: auto;
+        top: auto;
         transform: none;
         box-shadow: none;
         border: none;
         padding-left: 15px;
         border-left: 3px solid var(--primary);
-        margin: 5px 0 10px 10px;
-        width: 95%;
+        margin: 8px 0 12px 10px;
+        width: calc(100% - 10px);
+        background: transparent;
     }
+
+    .dropdown-menu.show {
+        display: flex;
+        opacity: 1;
+        transform: none;
+    }
+
+    .navbar.dark .dropdown-menu {
+        background: transparent;
+        border: none;
+        border-left: 3px solid var(--primary);
+    }
+
 
     /* Mobile Theme Button */
     .mobile-only {

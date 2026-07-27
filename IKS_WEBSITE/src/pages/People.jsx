@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PersonCard from "../components/PersonCard";
+import ErrorState from "../components/ErrorState";
 import "../css/People.css";
 
 function People() {
@@ -7,34 +8,36 @@ function People() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchPeople = async () => {
-            try {
-                const baseUrl = import.meta.env.VITE_BACKEND_URL;
-                const response = await fetch(`${baseUrl}/person/getpeople`);
+    const fetchPeople = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const baseUrl = import.meta.env.VITE_BACKEND_URL;
+            const response = await fetch(`${baseUrl}/person/getpeople`);
 
-                if (!response.ok) {
-                    throw new Error("Failed to fetch data");
-                }
-                const result = await response.json();
-
-                if (result.success) {
-                    setPeople(result.data);
-                }
-            } catch (err) {
-                console.error("Error:", err);
-                setError(err.message);
-            } finally {
-                setLoading(false);
+            if (!response.ok) {
+                throw new Error("Failed to fetch data");
             }
-        };
+            const result = await response.json();
 
+            if (result.success) {
+                setPeople(result.data);
+            }
+        } catch (err) {
+            console.error("Error:", err);
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
         fetchPeople();
     }, []);
 
     const chairperson = people.find(p =>
-        p.role.toLowerCase().includes("chairperson") ||
-        p.role.toLowerCase().includes("director")
+        p.role?.toLowerCase().includes("chairperson") ||
+        p.role?.toLowerCase().includes("director")
     );
 
     const teamMembers = people.filter(p => p._id !== chairperson?._id);
@@ -50,7 +53,13 @@ function People() {
                     </div>
                 )}
 
-                {error && <div className="people-error-msg">Error: {error}</div>}
+                {error && (
+                    <ErrorState
+                        title="Unable to Load Team Data"
+                        onRetry={fetchPeople}
+                    />
+                )}
+
 
                 {!loading && !error && (
                     <>

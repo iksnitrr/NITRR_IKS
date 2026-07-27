@@ -1,0 +1,99 @@
+/* =========================================
+   ERROR STATE CONTAINER & CARD STYLING
+   ========================================= */
+.error-state-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 45px 30px;
+  margin: 40px auto;
+  max-width: 520px;
+  width: 100%;
+  background-color: var(--card-light);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .error-state-card {
+  background-color: var(--card-dark);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.error-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: rgba(239, 68, 68, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode .error-icon-wrapper {
+  background-color: rgba(239, 68, 68, 0.2);
+}
+
+.error-icon {
+  color: #ef4444;
+}
+
+.error-state-title {
+  font-family: 'Merriweather', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .error-state-title {
+  color: var(--text-dark);
+}
+
+.error-state-message {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  max-width: 420px;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .error-state-message {
+  color: #94a3b8;
+}
+
+.error-retry-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(224, 124, 36, 0.25);
+  transition: all 0.2s ease;
+}
+
+.error-retry-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(224, 124, 36, 0.35);
+}
+
+.error-retry-btn:active {
+  transform: translateY(0);
+}

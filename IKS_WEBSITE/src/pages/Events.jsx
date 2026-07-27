@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Calendar, Clock, MapPin, User, FileText, ImageIcon, BookOpen, ChevronLeft, ChevronRight, X } from "lucide-react";
+import ErrorState from "../components/ErrorState";
 import "../css/People.css";
 import "../css/PublicEvents.css";
 
@@ -11,26 +12,28 @@ function Events() {
     // Lightbox State
     const [lightbox, setLightbox] = useState({ isOpen: false, images: [], index: 0 });
 
-    useEffect(() => {
-        const fetchEvents = async () => {
-            try {
-                const baseUrl = import.meta.env.VITE_BACKEND_URL;
-                const response = await fetch(`${baseUrl}/event/getevents`);
+    const fetchEvents = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const baseUrl = import.meta.env.VITE_BACKEND_URL;
+            const response = await fetch(`${baseUrl}/event/getevents`);
 
-                if (!response.ok) throw new Error("Failed to fetch events data");
+            if (!response.ok) throw new Error("Failed to fetch events data");
 
-                const result = await response.json();
-                if (result.success) {
-                    setEvents(result.data);
-                }
-            } catch (err) {
-                console.error("Error:", err);
-                setError(err.message);
-            } finally {
-                setLoading(false);
+            const result = await response.json();
+            if (result.success) {
+                setEvents(result.data);
             }
-        };
+        } catch (err) {
+            console.error("Error:", err);
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
 
+    useEffect(() => {
         fetchEvents();
     }, []);
 
@@ -205,7 +208,12 @@ function Events() {
                 </div>
 
                 {loading && <div className="events-loader">Loading events schedule...</div>}
-                {error && <div className="people-error-msg">Error loading events: {error}</div>}
+                {error && (
+                    <ErrorState
+                        title="Unable to Load Events Schedule"
+                        onRetry={fetchEvents}
+                    />
+                )}
 
                 {!loading && !error && (
                     <>
