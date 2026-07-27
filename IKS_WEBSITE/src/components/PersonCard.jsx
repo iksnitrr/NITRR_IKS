@@ -1,6 +1,5 @@
 import React from 'react';
 import { User, Mail, Award } from 'lucide-react';
-// Changed import from People.css to PersonCard.css
 import "../css/PersonCard.css";
 
 function PersonCard({ data, isChairperson = false }) {
@@ -15,7 +14,7 @@ function PersonCard({ data, isChairperson = false }) {
             <div className="p-card-inner">
                 <div className="p-card-img-wrapper">
                     {photo ? (
-                        <img src={photo} alt={cleanName} className="p-card-img" />
+                        <img src={photo} alt={cleanName} className="p-card-img" loading="lazy" />
                     ) : (
                         <div className="p-card-placeholder">
                             <User size={isChairperson ? 60 : 40} />

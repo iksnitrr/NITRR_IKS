@@ -57,6 +57,23 @@ function Events() {
         setLightbox(prev => ({ ...prev, index: prev.index === 0 ? prev.images.length - 1 : prev.index - 1 }));
     };
 
+    // --- Lightbox Controls & Preloading ---
+    useEffect(() => {
+        if (!lightbox.isOpen || !lightbox.images || lightbox.images.length <= 1) return;
+
+        const len = lightbox.images.length;
+        const nextIdx = (lightbox.index + 1) % len;
+        const prevIdx = (lightbox.index - 1 + len) % len;
+
+        // Preload next and previous photos into browser cache for instant switching
+        const imgNext = new Image();
+        imgNext.src = getUrl(lightbox.images[nextIdx]);
+
+        const imgPrev = new Image();
+        imgPrev.src = getUrl(lightbox.images[prevIdx]);
+    }, [lightbox.isOpen, lightbox.index, lightbox.images]);
+
+
     // --- NEW: Keyboard Navigation for Lightbox ---
     useEffect(() => {
         const handleKeyDown = (e) => {
