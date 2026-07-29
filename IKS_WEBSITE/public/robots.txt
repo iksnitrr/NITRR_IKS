@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://iks.nitrr.ac.in/sitemap.xml
